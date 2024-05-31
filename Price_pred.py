@@ -29,6 +29,7 @@ encode_dict = {
 }
 
 def model_pred(fuel_type, transmission_type, engine, seats, reg_model):
+    # here I am taking some features in hard coded manner, we can take them from user also.
     input_features = [[2018, 1, 4000, fuel_type, transmission_type, 19.7, engine, 86.3, seats]]
     return reg_model.predict(input_features)
 
