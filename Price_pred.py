@@ -19,7 +19,6 @@ st.set_page_config(page_title="Car Price Predictor", page_icon="🚗")
 
 
 st.title("Used Cars Price Prediction")
-st.title("Used Cars Price Prediction")
 st.markdown("### Get the best estimate for your used car!")
 
 
