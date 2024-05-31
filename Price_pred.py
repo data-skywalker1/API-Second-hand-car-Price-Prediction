@@ -8,13 +8,21 @@ cars_df=pd.read_excel("cars24-car-price.xlsx")
 
 with open("car_pred.pkl","rb") as file:
     reg_model=pickle.load(file)
+# right now for the specific use case data is present as a static df, howver in actual sense it wil come from a db
+cars_df=pd.read_excel("cars24-car-price.xlsx")
+
+with open("car_pred.pkl","rb") as file:
+    reg_model=pickle.load(file)
 
 # the title and description
+st.set_page_config(page_title="Car Price Predictor", page_icon="🚗")
 st.set_page_config(page_title="Car Price Predictor", page_icon="🚗")
 
 
 st.title("Used Cars Price Prediction")
+st.title("Used Cars Price Prediction")
 st.markdown("### Get the best estimate for your used car!")
+
 
 
 encode_dict = {
@@ -23,6 +31,13 @@ encode_dict = {
     "transmission_type": {'Manual': 1, 'Automatic': 2}
 }
 
+def model_pred(fuel_type,transmission_type,engine,seats,reg_model):
+    
+    
+        input_features=[[2018,1,4000,fuel_type,transmission_type,19.7,engine,86.3,seats]]
+
+        return(reg_model.predict(input_features))
+    
 def model_pred(fuel_type,transmission_type,engine,seats,reg_model):
     
     
@@ -51,6 +66,8 @@ if st.button("Predict Price"):
     
     st.success(f"🔮 Predicted Price of the car is: ₹{price[0]:,.2f} lakhs")
 
+
+    # Footer
 
 
 
