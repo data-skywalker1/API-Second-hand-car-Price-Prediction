@@ -4,6 +4,7 @@ import datetime
 import pickle
 
 # Load the dataset and model
+# since the data is in static file we are we loading like below, however in actual data will come from db or real time data
 cars_df = pd.read_excel("cars24-car-price.xlsx")
 with open("car_pred.pkl", "rb") as file:
     reg_model = pickle.load(file)
