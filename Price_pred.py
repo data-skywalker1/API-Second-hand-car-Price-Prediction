@@ -25,28 +25,31 @@ encode_dict = {
 
 def model_pred(fuel_type,transmission_type,engine,seats,reg_model):
     
-        # here I am taking some features in coded manner but we can take them from user
-        input_features=[[2019,1,4000,fuel_type,transmission_type,19.7,engine,86.3,seats]]
+    
+        input_features=[[2018,1,4000,fuel_type,transmission_type,19.7,engine,86.3,seats]]
 
         return(reg_model.predict(input_features))
     
-col1, col2,col3= st.columns(3)
+# Layout
+st.markdown("#### Please provide the following details:")
 
-fuel_type=col1.selectbox("Select the fuel type",["Diesel","Petrol","CNG","LPG","Electric"])
-engine=col1.slider("Set the engine power",500,5000,step=100)
+col1, col2 = st.columns(2)
 
-transmission_type=col3.selectbox("Select the transmission type",["Manual","Automatic"])
+with col1:
+    fuel_type = st.selectbox("Fuel Type", ["Diesel", "Petrol", "CNG", "LPG", "Electric"])
+    engine = st.slider("Engine Power (cc)", 500, 5000, step=100)
+    seats = st.selectbox("Number of Seats", [4, 5, 7, 9, 11])
 
-seats=col1.selectbox("Enter the number of seats",[4,5,7,9,11])
-random=col3.slider("Set the random power",500,5000,step=100)
-# random2=col3.selectbox("Enter random2 seats",[4,5,7,9,11])
+with col2:
+    transmission_type = st.selectbox("Transmission Type", ["Manual", "Automatic"])
 
-if (st.button("Predict Price")):
-    fuel_type=encode_dict['fuel_type'][fuel_type]
-    transmission_type=encode_dict["transmission_type"][transmission_type]
-    price=model_pred(fuel_type,transmission_type,engine,seats,reg_model)
-    st.text("Predicted Price of the car is:"+ str(price))
-
+# Prediction button
+if st.button("Predict Price"):
+    fuel_type_encoded = encode_dict['fuel_type'][fuel_type]
+    transmission_type_encoded = encode_dict["transmission_type"][transmission_type]
+    price = model_pred(fuel_type_encoded, transmission_type_encoded, engine, seats, reg_model)
+    
+    st.success(f"🔮 Predicted Price of the car is: ₹{price[0]:,.2f} lakhs")
 
 
     # Footer
