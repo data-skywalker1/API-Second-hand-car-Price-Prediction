@@ -3,12 +3,7 @@ import streamlit as st
 import datetime
 import pickle
 
-# right now for the specific use case data is present as a static df, howver in actual sense it wil come from a db
-cars_df=pd.read_excel("cars24-car-price.xlsx")
-
-with open("car_pred.pkl","rb") as file:
-    reg_model=pickle.load(file)
-# right now for the specific use case data is present as a static df, howver in actual sense it wil come from a db
+# right now for the specific use case data is present as a static df, however in actual sense it wil come from a db
 cars_df=pd.read_excel("cars24-car-price.xlsx")
 
 with open("car_pred.pkl","rb") as file:
@@ -31,17 +26,11 @@ encode_dict = {
 
 def model_pred(fuel_type,transmission_type,engine,seats,reg_model):
     
-    
-        input_features=[[2018,1,4000,fuel_type,transmission_type,19.7,engine,86.3,seats]]
+        # This is only for demo, so In here I am hard coding some feature, but we can take them from users
+        input_features=[[2016,1,4000,fuel_type,transmission_type,19.7,engine,86.3,seats]]
 
         return(reg_model.predict(input_features))
-    
-def model_pred(fuel_type,transmission_type,engine,seats,reg_model):
-    
-    
-        input_features=[[2018,1,4000,fuel_type,transmission_type,19.7,engine,86.3,seats]]
 
-        return(reg_model.predict(input_features))
     
 # Layout
 st.markdown("#### Please provide the following details:")
