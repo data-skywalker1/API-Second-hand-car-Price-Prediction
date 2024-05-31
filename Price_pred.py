@@ -16,7 +16,6 @@ with open("car_pred.pkl","rb") as file:
 
 # the title and description
 st.set_page_config(page_title="Car Price Predictor", page_icon="🚗")
-st.set_page_config(page_title="Car Price Predictor", page_icon="🚗")
 
 
 st.title("Used Cars Price Prediction")
