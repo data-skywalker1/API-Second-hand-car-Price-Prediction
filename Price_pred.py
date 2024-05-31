@@ -68,10 +68,6 @@ if st.button("Predict Price"):
 
 
     # Footer
-
-
-
-    # Footer
 st.markdown("---")
 st.markdown("**Note:** This is a simulated prediction based on the given input features.")
 st.markdown("Made with ❤️ by Anup")
