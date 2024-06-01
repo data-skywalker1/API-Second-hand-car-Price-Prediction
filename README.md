@@ -1,3 +1,3 @@
 # API
-**predicting second hand Car price Using Regression Model and Streamlit**
+**predicting second hand Car price**
 - Using Linear Regression Model and streamlit
